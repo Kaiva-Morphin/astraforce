@@ -1,0 +1,24 @@
+[workspace]
+resolver = "2"
+
+members = ["client", "client_utils", "server", "shared"]
+
+
+[workspace.dependencies]
+bevy = { version = "0.20.1" }
+# kaiv_utils = { path = "libs/kaiv_utils", features = ["bevy"] }
+kaiv_utils = { git = "https://github.com/kaiv-dev/kaiv_utils.git", branch = "main", features = ["bevy_support", "trace_err"] }
+bevy_renet.version = "6.0"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev.package.wgpu-types]
+debug-assertions = false
+
+[profile.release]
+codegen-units = 1
+lto = "thin"

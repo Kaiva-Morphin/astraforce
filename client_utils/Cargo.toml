@@ -1,0 +1,11 @@
+[package]
+name = "client_utils"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = { version = "0.20.1", default-features = false }
+shared = { version = "0.1.0", path = "../shared" }
+kaiv_utils.workspace = true
+bevy_egui = "0.43.1"
+bevy-inspector-egui = "0.38.0"

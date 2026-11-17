@@ -1,0 +1,9 @@
+[package]
+name = "shared"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy_renet.workspace = true
+bevy = { version = "0.20.1", default-features = false }
+rayon = "1.12.0"

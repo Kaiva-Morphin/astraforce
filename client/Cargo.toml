@@ -1,0 +1,18 @@
+[package]
+name = "client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = { workspace = true, features = [
+    "file_watcher",
+    "embedded_watcher",
+    "dynamic_linking",
+] }
+kaiv_utils.workspace = true
+bevy_renet.workspace = true
+bevy_egui = "0.43.1"
+bevy-inspector-egui = "0.38.0"
+shared = { version = "0.1.0", path = "../shared" }
+client_utils = { version = "0.1.0", path = "../client_utils" }
+rand = "0.10.3"
