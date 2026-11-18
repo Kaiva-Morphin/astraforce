@@ -1,10 +1,19 @@
-use std::ops::{Add, AddAssign};
+use std::ops::{Add, AddAssign, Sub};
 use bevy::prelude::*;
 
-#[derive(Component, Default)]
+#[derive(Component, Default, Clone, Copy)]
 pub struct Velocity {
     pub x: f32,
     pub y: f32,
+}
+
+impl Velocity {
+    pub fn to_vec2(self) -> Vec2 {
+        Vec2 {
+            x: self.x,
+            y: self.y
+        }
+    }
 }
 
 fn vel2(x: f32, y: f32) -> Velocity {
@@ -46,6 +55,28 @@ impl AddAssign<Vec2> for Velocity {
     fn add_assign(&mut self, rhs: Vec2) {
         self.x += rhs.x;
         self.y += rhs.y;
+    }
+}
+
+impl Sub for Velocity {
+    type Output = Self;
+
+    fn sub(self, rhs: Self) -> Self::Output {
+        Self {
+            x: self.x - rhs.x,
+            y: self.y - rhs.y,
+        }
+    }
+}
+
+impl Sub for &Velocity {
+    type Output = Velocity;
+
+    fn sub(self, rhs: Self) -> Self::Output {
+        Self::Output {
+            x: self.x - rhs.x,
+            y: self.y - rhs.y,
+        }
     }
 }
 

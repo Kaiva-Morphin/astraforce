@@ -57,17 +57,14 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         Sprite::from_image(asset_server.load("ships/alpha.png")),
         Transform::from_xyz(0., 0., 0.),
         Player,
-        Velocity::default(),
-        PhysicsBody::Dynamic,
-        Collider::circle(12.0)
+        PhysicsBody::radius(12.0),
     ));
 
     commands.spawn((
         Sprite::from_image(asset_server.load("ships/alpha.png")),
         Transform::from_xyz(40., 0., 0.),
-        Velocity::default(),
-        PhysicsBody::Dynamic,
-        Collider::circle(12.0)
+        Velocity::from(vec2(-5.0, 0.0)),
+        PhysicsBody::radius(12.0),
     ));
 }
 

@@ -1,29 +1,36 @@
 use bevy::prelude::*;
 
+use crate::physics::velocity::Velocity;
 
 
-#[derive(Component, Default)]
-pub enum PhysicsBody {
-    Fixed,
-    #[default]
-    Dynamic
-}
 
 #[derive(Component)]
-pub enum Collider {
-    LineCollider {
-        start: Vec2,
-        end: Vec2,
-    },
-    CircleCollider {
-        radius: f32,
+#[require(
+    Velocity,
+    Transform,
+)]
+pub struct PhysicsBody {
+    pub radius: f32,
+    pub mass: f32,
+    pub bounciness: f32,
+}
+
+impl PhysicsBody {
+    pub fn radius(r: f32) -> Self {
+        Self {
+            radius: r, 
+            ..default()
+        }
     }
 }
 
-
-impl Collider {
-    pub fn circle(r: f32) -> Self {
-        Self::CircleCollider {radius: r}
+impl Default for PhysicsBody {
+    fn default() -> Self {
+        Self {
+            radius: 1.0,
+            mass: 1.0,
+            bounciness: 1.0,
+        }
     }
 }
 

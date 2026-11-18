@@ -5,6 +5,7 @@ kaiv_utils::module_import_prelude! {
             pub mod velocity;
             pub mod collider;
             pub mod chunks;
+            pub mod system;
         }
     }
 }
